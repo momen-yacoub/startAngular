@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+  <title> Main Page </title>
+
+  <script type="text/javascript"  src="angularJS/angular.min.js"></script>
+  <script type="text/javascript"  src="angularJS/angular-ui-router.js"></script>
+  <script type="text/javascript"  src="js/app.js"></script> 
+  <style>.active { color: red; font-weight: bold; }</style> 
+  </head>
+
+  <body ng-controller="homeCtr">
+    {{name}}
+    <table width="100%" border="1">
+      <tr>
+        <td height="100%" width="20%" align="center" valign="middle">
+
+          Search: <input type="text"  ng-model="search"/>
+
+          <div ng-repeat="user in userData | limitTo:limit |filter:search:login:true">
+                <a ui-sref="user({id: user.id})" ui-sref-active="active" >
+                    {{user.login}}
+                </a> 
+           </div> 
+           <button ng-click='loadMore()'>Load More</button>
+          
+        </td>
+        <td height="100%" width="70%" align="center" valign="middle">
+          <ui-view></ui-view>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
+
+
+ <!--     Search: <input type="text"  ng-model="search"/>
+           <div ng-repeat="user in userData | limitTo:limit |filter:search:login:true">
+              <div ng-click="userClick(user)">{{user.login}}</div>
+            </div> 
+            <button ng-click='loadMore()'>Load More</button>
+            -->
